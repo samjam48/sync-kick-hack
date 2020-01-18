@@ -52,12 +52,12 @@ let rearrangedPlayer = [
   }
 ];
 
-const Player = ({ files }) => {
+const Player = ({ track }) => {
   let playlist = [
     {
-      src: files[0].downloadUrl,
-      title: files[0].artist,
-      artist: files[0].artist
+      src: track.downloadUrl,
+      title: track.title,
+      artist: track.artist
     }
   ];
 
