@@ -1,5 +1,5 @@
 const axios = require('axios');
-// const baseUrl = 'http://1ceeb79f.ngrok.io';
+// const baseUrl = 'https://sync-kick.herokuapp.com';
 
 const getAlldata = () => {
   return axios
