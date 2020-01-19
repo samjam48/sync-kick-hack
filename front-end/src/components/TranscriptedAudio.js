@@ -12,21 +12,18 @@ const TranscriptedAudio = ({ track }) => {
 
   setTimeout( function() {
     handlers.getCommentsByAudioId(track.id).then(comments => {
-      console.log(comments);
       setComments(comments);
-      console.log(words.size)
       fillHasComments(comments);
     })}, 5000
   )
 
   const openComments = (wordIndex) => {
-    console.log("yeahhhhhhhh!!!!!!!!!!!!!!!" + wordIndex)
   }
 
   const fillHasComments = (comments) => {
     let hasCommentsArr = {};
     for (let i=0; i < words.length; ++i) {
-      let commentsArr = comments.comments["" + i];
+      let commentsArr = comments != undefined ? comments.comments["" + i] : undefined;
       hasCommentsArr[i] = commentsArr !== undefined && commentsArr.length >= 1;
     }
     setHasComments(hasCommentsArr);
@@ -36,7 +33,7 @@ const TranscriptedAudio = ({ track }) => {
     <CardContent>
       <Typography paragraph>
         { words.map((word, i) => <> 
-          <WordLink word={word} key={i} hasComments={hasComments[i]} wordIndex={i} openComments={openComments.bind(this)} />
+          <WordLink word={word} key={i} comments={comments} hasComments={hasComments[i]} wordIndex={i} audioId={track.id} openComments={openComments.bind(this)} />
         </>)
         }
       </Typography>

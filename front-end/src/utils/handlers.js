@@ -34,8 +34,20 @@ const getCommentsByAudioId = audioId => {
     });
 };
 
+const postComment = (audioId, wordNumber, user, comment) => {
+  return axios
+    .post(`/post-comment`, {audioId: audioId, wordNumber: wordNumber, user: user, comment: comment})
+    .then(res => {
+      return res.data;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
 export default {
   getAlldata,
   getById,
-  getCommentsByAudioId
+  getCommentsByAudioId,
+  postComment
 };
