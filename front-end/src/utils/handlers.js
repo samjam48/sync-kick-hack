@@ -23,7 +23,19 @@ const getById = id => {
     });
 };
 
+const getCommentsByAudioId = audioId => {
+  return axios
+    .get(`/get-comments?id=${audioId}`)
+    .then(res => {
+      return res.data;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
 export default {
   getAlldata,
-  getById
+  getById,
+  getCommentsByAudioId
 };

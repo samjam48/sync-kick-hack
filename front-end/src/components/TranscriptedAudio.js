@@ -3,9 +3,18 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
 import WordLink from './WordLink';
+import handlers from '../utils/handlers';
 
+const TranscriptedAudio = ({ track }) => {
+  const [comments, setComments] = React.useState([]);
 
-const TranscriptedAudio = ({ track }) =>{
+  setTimeout( function() {
+    handlers.getCommentsByAudioId(track.id).then(comments => {
+      console.log(comments);
+      setComments(comments);
+    })}, 5000
+  )
+  
   const words = track.transcription.split(" ");
 
   const openComments = (wordIndex) => {
