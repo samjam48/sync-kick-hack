@@ -17,28 +17,19 @@ import TranscriptedAudio from './TranscriptedAudio';
 
 const useStyles = makeStyles(theme => ({
   card: {
-    display: 'flex',
     maxWidth: 600,
+  },
+  media: {
+    widht: 150,
+    height: 150,
+    flex: '1 0 auto'
   },
   details: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
   },
   content: {
     flex: '1 0 auto',
-  },
-  cover: {
-    width: 151,
-  },
-  controls: {
-    display: 'flex',
-    alignItems: 'center',
-    paddingLeft: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-  },
-  playIcon: {
-    height: 38,
-    width: 38,
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -78,6 +69,7 @@ const AudioCard = ({ track }) => {
   return (
     <Card className={classes.card}>
       <div className={classes.details}>
+        <div>
         <CardContent className={classes.content}>
           <Typography component="h5" variant="h5">
             {track.title}
@@ -86,7 +78,6 @@ const AudioCard = ({ track }) => {
             {track.artist}
           </Typography>
         </CardContent>
-        <div className={classes.controls}>
           <IconButton aria-label="previous">
             {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
           </IconButton>
@@ -94,13 +85,13 @@ const AudioCard = ({ track }) => {
           <IconButton aria-label="next">
             {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
           </IconButton>
-        </div>
-      </div>
+          </div>
       <CardMedia
-        className={classes.cover}
+        className={classes.media}
         image={track.pictureUrl}
-        title={track.title}
+        title="Paella dish"
       />
+      </div>
       <CardActions disableSpacing>
         <IconButton
           className={clsx(classes.expand, {
@@ -115,8 +106,8 @@ const AudioCard = ({ track }) => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <TranscriptedAudio track={track}></TranscriptedAudio>
-      </Collapse>
-    </Card>
+      </Collapse>    
+      </Card>
   );
 }
 
