@@ -114,7 +114,7 @@ const AudioCard = ({ track }) => {
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <TranscriptedAudio></TranscriptedAudio>
+        <TranscriptedAudio track={track}></TranscriptedAudio>
       </Collapse>
     </Card>
   );
