@@ -2,34 +2,25 @@ import React, { useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
+import WordLink from './WordLink';
 
-const useStyles = makeStyles(theme => ({
-  card: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  }
-}));
 
 const TranscriptedAudio = ({ track }) =>{
-  const classes = useStyles();
+  const words = track.transcription.split(" ");
+
+  const openComments = (wordIndex) => {
+    console.log("yeahhhhhhhh!!!!!!!!!!!!!!!" + wordIndex)
+  }
 
   return (
     <CardContent>
-          <Typography paragraph>{track.transcription}</Typography>
-        </CardContent>
+      <Typography paragraph>
+        { words.map((word, i) => <> 
+          <WordLink word={word} key={i} wordIndex={i} openComments={openComments.bind(this)} />
+        </>)
+        }
+      </Typography>
+    </CardContent>
   );
 }
 

@@ -14,7 +14,7 @@ const getAlldata = () => {
 
 const getById = id => {
   return axios
-    .get(`/get-transcriptedaudio/${id}`)
+    .get(`/get-transcriptedaudio?${id}`)
     .then(res => {
       return res.data;
     })
