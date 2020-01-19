@@ -9,8 +9,12 @@ const Screen = ({ files }) => {
   } else {
     return (
       <>
-        <TrackDetails track={files[0]} />
-        <Player track={files[0]} />
+      {
+        files.map((file, i) => <>
+          <TrackDetails track={file} />
+          <Player track={file} />
+        </>)
+      }
       </>
     );
   }
