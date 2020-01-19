@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const WordLink = ({ word, wordIndex, openComments }) =>{
+const WordLink = ({ word, wordIndex, hasComments, openComments }) =>{
 
   const trigger = () => {
     openComments(wordIndex)
